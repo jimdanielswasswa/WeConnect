@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Businesses Details</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/css/fa-brands.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+        <a class="navbar-brand text-white" href="../../../index.html">WeConnect</a>
+
+        <button class="navbar-toggler bg-dark text-white" type="button" data-toggle="collapse" data-target="#navbar">
+            <span class="fa fa-align-justify"></span>
+        </button>
+
+        <div class="collapse navbar-collapse  justify-content-end text-white" id="navbar">
+            <ul class="navbar-nav">
+                
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="registerbusiness.html">Register Business</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="viewbusinesses.html">View Businesses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+    <div class="container-fluid">
+        <div class="row" id="business-container">
+            <div class="col-md-4 offset-1 big-top-padding">
+				<div class="bus-logo text-center img-thumbnail">
+					<img class="img-fluid w-100" src="../../images/uploads/business/lorem.jpg" alt="business logo">
+				</div>
+            </div>
+            <div class="col-md-6 big-top-padding">
+                <ul class="list-group">
+                    <li class="list-group-item bg-dark text-white">Details</li>
+                    <li class="list-group-item">Name: Brothers And Sons</li>
+                    <li class="list-group-item">Location: Kampala</li>
+                    <li class="list-group-item"><a href="businessreviews.html">Comments:</a> 0</li>
+                    <li class="list-group-item">Categories: Retail, Whole Sale</li> 
+                    <li class="list-group-item">
+                        <a href="editbusiness.html" class="btn btn-primary">Edit</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </li> 
+                </ul> 
+            </div>
+            <div class="col-md-10 offset-1 small-padding">
+                <h3>Description:</h3>
+                <hr/>
+                <div>
+                    Business Description.
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-1 big-bottom-padding">
+                <h3>Comments</h3>
+                <hr/>
+                <div class="commnt-form w-75">
+                    <div class="form-group">
+                        <label for="commnt-text">Comment:</label>
+                        <textarea class="form-control bg-secondary text-white" rows="4" id="commnt-text" name="commnt-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Post" class="btn btn-success"/>
+                    </div>
+                </div>
+                <hr/>
+                <div class="comments">
+                    <div class="media">
+                        <img class="d-flex mr-3 prof-img" src="../../images/uploads/user/female_avatar.png" alt="user image"/>
+                        <div class="media-body">
+                            <h5 class="mt-0">User Name</h5>
+                            Comment Text.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row footer bg-dark">
+            <div class="col-md-12 align-self-end pb-4">
+                <div class="w-100 text-center border-0 big-font">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-square "></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Google +"><i class="fab fa-google-plus"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../scripts/js/jquery-3.0.0.min.js"></script>
+    <script src="../../scripts/js/bootstrap.min.js"></script>
+</body>
+</html>

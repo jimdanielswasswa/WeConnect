@@ -1,0 +1,43 @@
+html, body, .container-fluid{ height: 100%; }
+
+hr { background-color:#fff; }
+
+.big-font {
+    font-size:2.813em; /*45px*/
+}
+
+.spotlight {
+    background-image: url("../../images/site/bus.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 90%;
+}
+.big-top-padding{
+    padding-top: 5.313em; /*85px 0*/
+}
+.big-bottom-padding{
+    padding-bottom: 5.313em; /*85px 0*/
+}
+.small-padding{
+	padding: 0.938em; /*15px*/
+}
+.prof-img{
+    width: 3.75em; /*60 px*/
+}
+.bus-logo {
+	height: 350px; 
+	overflow: hidden;
+}
+.footer {
+    height: 50%;
+    /* background-color: #333; */
+}
+
+@media only screen and (max-width: 768px){
+    .navbar{
+        background-color: #343a40;
+    }
+    .navbar-nav li:focus, .navbar-nav li:hover, .navbar-nav li.active { background-color:#1d2124; }
+}

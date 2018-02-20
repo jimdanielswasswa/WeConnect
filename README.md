@@ -3,3 +3,6 @@ WeConnect provides a platform that brings businesses and individuals together. T
 
 
 GitHub Pages: https://jimdanielswasswa.github.io/WeConnect/
+
+
+[![Coverage Status](https://.io/repos/github///badge.svg?branch=master)](https://.io/github//?branch=master)

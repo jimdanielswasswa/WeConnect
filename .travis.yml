@@ -9,5 +9,6 @@ branches:
   only:
   - master
   - develop
+  - feature/api_v1_branch
 after_success:
 - coveralls

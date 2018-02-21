@@ -13,4 +13,6 @@ GitHub Pages: https://jimdanielswasswa.github.io/WeConnect/
 
 [![Coverage Status](https://.io/repos/github///badge.svg?branch=feature/ui_branch)](https://.io/github//?branch=feature/ui_branch)
 
+https://travis-ci.org/jimdanielswasswa/WeConnect.svg?branch=master
+
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)

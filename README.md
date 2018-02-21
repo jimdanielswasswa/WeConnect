@@ -30,7 +30,6 @@ SET FLASK_CONFIG=development
 ```
 ### Mac OS Configurations For The API:
 ```
-pip install -r requirements.txt
 export FLASK_APP=run.py
 export FLASK_CONFIG=development
 ```

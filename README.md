@@ -12,8 +12,6 @@ WeConnect provides a platform that brings businesses and individuals together. T
 
 [![Build Status](https://travis-ci.org/jimdanielswasswa/WeConnect.svg?branch=feature%2Fapi_v1_branch)](https://travis-ci.org/jimdanielswasswa/WeConnect)
 
-[![Build Status](https://travis-ci.org/jimdanielswasswa/WeConnect.svg?branch=feature%2Fui_branch)](https://travis-ci.org/jimdanielswasswa/WeConnect)
-
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
 ### Enviroment Setup For The API

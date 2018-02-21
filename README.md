@@ -3,7 +3,7 @@ WeConnect provides a platform that brings businesses and individuals together. T
 
 
 ### User Interface On GitHub Pages:
-https://jimdanielswasswa.github.io/WeConnect/
+[WeConnect](https://jimdanielswasswa.github.io/WeConnect/)
 
 ### Badges:
 [![Build Status](https://travis-ci.org/jimdanielswasswa/WeConnect.svg?branch=master)](https://travis-ci.org/jimdanielswasswa/WeConnect)

@@ -2,13 +2,13 @@ language: python
 python:
   - "3.6"
 install:
-  - pip install -r requirements.txt
+  - pip install -r api/v1/requirements.txt
 script:
-  - nosetests tests.py
+  - nosetests nosetests api/v1/tests.py
 branches:
   only:
   - master
   - develop
-  - feature/api_v1_branch
+  - feature/apiv1_branch
 after_success:
 - coveralls

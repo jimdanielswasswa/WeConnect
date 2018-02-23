@@ -11,17 +11,19 @@ class Review(object):
     def __init__(self,comment):
         self.comment = comment
 
-def get_review(review):
-    return {'comment':review.comment, 'userId':review.user_id, 'businessId':review.business_id}
+    @staticmethod
+    def get_review(review):
+        return {'comment':review.comment, 'userId':review.user_id, 'businessId':review.business_id}
 
-def get_reviews():
-    review1 = Review(comment='Nice!!')
-    review2 = Review(comment='Greate!!')
-    review1.id = 1
-    review1.user_id = 1
-    review1.business_id = 1,
-    review2.id = 2
-    review2.user_id = 2
-    review2.business_id = 2,
-    reviews = [ review1, review2 ]
-    return reviews
+    @staticmethod
+    def get_reviews():
+        review1 = Review(comment='Nice!!')
+        review2 = Review(comment='Greate!!')
+        review1.id = 1
+        review1.user_id = 1
+        review1.business_id = 1,
+        review2.id = 2
+        review2.user_id = 2
+        review2.business_id = 2,
+        reviews = [ review1, review2 ]
+        return reviews

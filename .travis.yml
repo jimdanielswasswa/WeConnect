@@ -13,6 +13,7 @@ branches:
   - master
   - develop
   - feature/apiv1_branch
+  - feature/api_branch
 before_script:
   - psql -c 'create database weconnect_test;' -U postgres
   - python api/v1/manage.py db migrate

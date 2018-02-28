@@ -38,5 +38,6 @@ export FLASK_CONFIG=development
 
 ### Running Tests:
 ```
-nosetests tests.py
+nosetests api/v1/api/tests/tests_auth_endpoints.py
+nosetests api/v1/api/tests/tests_business_endpoints.py
 ```

@@ -367,7 +367,6 @@ def create_app(config_name):
 
     @app.route('/api/v1/filter/<string:filter>/location', methods=['GET'])
     def location_businesses(filter):
-        import pdb; pdb.set_trace()
         response = jsonify({})
         businesses = []
         location = Location.query.filter_by(name=str(filter)).first()

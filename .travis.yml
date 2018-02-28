@@ -4,7 +4,7 @@ python:
 install:
   - pip install -r api/v1/requirements.txt
 script:
-  - nosetests api/v1/api/tests/test_auth_endpoints.py
+  - nosetests api/v1/api/tests/tests_auth_endpoints.py
   - nosetests api/v1/api/tests/tests_business_endpoints.py
 services:
   - postgresql

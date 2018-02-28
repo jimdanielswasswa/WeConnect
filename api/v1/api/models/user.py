@@ -4,7 +4,7 @@ from flask import current_app
 from flask_bcrypt import Bcrypt
 import jwt
 
-from blacklisted_tokens import BlacklistedToken
+from .blacklisted_tokens import BlacklistedToken
 
 from api import db
 

@@ -21,6 +21,7 @@ class TestingConfig(Config):
     """Test Configs"""
     TESTING = True
     DEBUG = True
+    SQLALCHEMY_ECHO = False
 
 
 app_config = {

@@ -1,31 +1,35 @@
 from datetime import datetime
 
-class Category(object):    
-    id = 0
-    name = ''
-    businesses = []
-    created_at = datetime.utcnow()
-    updated_at = datetime.utcnow()
+from api import db
 
-    def __init__(self, name):
-        self.name = name
+
+class Category(db.Model):
+    """"""
+    __tablename__ = 'categories'
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        """"""
+        return '<Category : {0} >'.format(self.name)
 
     @staticmethod
     def get_category(id):
-        categories = Category.get_categories()
-        category = {}
-        for c in categories:
-            category["id"] = c.id
-            category["name"] = c.name
-            category["businesses"] = c.businesses
+        category = Category.query.get(int(id))
         return category
+
     @staticmethod
     def get_categories():
-        category1 = Category(name='Retail')
-        category2 = Category(name='Whole Sale')
-        category1.id = 1
-        category1.businesses = []
-        category2.id = 2
-        category2.businesses = []
-        categories = [category1, category2]
+        categories = Category.query.all()
         return categories
+    @staticmethod
+    def get_categories_details(category):
+        return { 
+            'id': category.id, 'name': category.name, 'createdAt': category.created_at, 'updatedAt': category.updated_at
+         }

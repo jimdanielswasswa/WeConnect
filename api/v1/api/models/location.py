@@ -1,31 +1,40 @@
 from datetime import datetime
 
-class Location(object):
-    id = 0
-    name = ''
-    businesses = []
-    created_at = datetime.utcnow()
-    updated_at = datetime.utcnow()
+from api import db
+from . business import Business
 
-    def __init__(self, name):
-        self.name = name
+
+class Location(db.Model):
+    """"""
+    __tablename__ = 'locations'
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    name = db.Column(db.String(100), nullable=False, unique=True)
+    businesses = db.relationship(
+        'Business', backref='location', lazy=True, cascade='all, delete-orphan')
+    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        """"""
+        return '<Location : {0} >'.format(self.name)
+
     @staticmethod
     def get_location(id):
-        locations = Location.get_locations()
-        location = {}
-        for l in locations:
-            location[id] = l.id
-            location["name"] = l.name
-            location["businesses"] = []
-
+        location = Location.query.get(int(id))
         return location 
+
     @staticmethod
     def get_locations():
-        location1 = Location(name='Kampala')
-        location2 = Location(name='Nirobi')
-        location1.id = 1
-        location1.businesses = []
-        location2.id = 1
-        location2.businesses = []
-        locations = [location1, location2]
+        locations = Location.query.all()
         return locations
+    @staticmethod
+    def get_location_details(location):
+        if location:
+            location_details = { 
+                'id': location.id, 'name': location.name, 'createdAt': location.created_at, 'updatedAt': location.updated_at
+            }
+        return location_details

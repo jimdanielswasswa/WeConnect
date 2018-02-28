@@ -1,67 +1,65 @@
 from datetime import datetime
 
-from .review import Review
+from api import db
+
 from .category import Category
+from .review import Review
 
-class Business(object):
-    id = 0
-    name = ''
-    user_id = 0
-    location_id = 0
-    categories = []
-    reviews = []
-    created_at = datetime.utcnow()
-    updated_at = datetime.utcnow()
+business_category = db.Table('business_category',
+                             db.Column('business_id', db.Integer, db.ForeignKey(
+                                 'businesses.id'), primary_key=True),
+                             db.Column('category_id', db.Integer, db.ForeignKey(
+                                 'categories.id'), primary_key=True)
+    )
 
-    def __init__(self, name, description, user_id, location_id, photo):
-        self.name = name
-        self.description = description
-        self.user_id = user_id
-        self.location_id = location_id
-        self.photo = photo
-    
+class Business(db.Model):
+    """"""
+    __tablename__ = 'businesses'
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    name = db.Column(db.String(100), nullable=False, unique=True)
+    description = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    location_id = db.Column(db.Integer, db.ForeignKey('locations.id'))
+    categories = db.relationship('Category', secondary=business_category,
+                                 lazy='subquery', backref=db.backref('businesses', lazy=True))
+    reviews = db.relationship('Review', backref='business', lazy=True)
+    photo = db.Column(db.String(200))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow())
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow())
+
+
+    def create(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
+        business = Business.query.get(self.id)
+        result = { 
+            'message': 'Business updated successfully.', 'code': 200, 'business': Business.get_business_details(business) 
+            }
+        return result
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()        
+        
+
     @staticmethod
     def get_business(id):
-        businesses = Business.get_businesses()
-        business = Business(name='', description='', user_id=0,location_id=0,photo='')
-        for b in businesses:
-            if b.id == id:
-                business = b
+        business = Business.query.get(int(id))
         return business
 
     @staticmethod
     def get_business_details(business):
+        categories = [ Category.get_categories_details(c) for c in business.categories ]
         return {'id': business.id, 'name':business.name, 'description': business.description, 'userId':business.user_id, \
-            'locationId':business.location_id, 'categories':business.categories, 'photo':business.photo}
+            'locationId':business.location_id, 'categories':categories, 'photo':business.photo}
 
     @staticmethod
     def get_businesses():
-        bus1 = Business(name='Brothers And Sons', description='Brothers And Sons', user_id=1, location_id=1, photo='logo.jpg') 
-        bus1.id=1
-        bus1.reviews = Business.get_business_reviews(1)
-        bus1.categories = []
-
-        bus2 = Business(name='New Cars', description='Cars', user_id=2, location_id=2, photo='logo.jpg')
-        bus2.id=2
-        bus2.reviews = Business.get_business_reviews(2)
-        bus2.categories = []
-        businesses = [bus1, bus2]
+        businesses = Business.query.all()
         return businesses
 
-    @staticmethod
-    def get_business_reviews(id):
-        reviews_list = Review.get_reviews()
-        reviews = []
-        for r in reviews_list:
-            if r.business_id == id:
-                reviews.append(Review.get_review(r))      
-        return reviews
-
-    @staticmethod
-    def get_business_categories(ids):
-        cats = Business.get_businesses()
-        categories = []
-        for cat in cats:
-            if cat.id in ids:
-                categories.append({"id": cat.id, "name": cat.name})
-        return categories
+    def __repr__(self):
+        """"""
+        return '<Business : {0} >'.format(self.name)

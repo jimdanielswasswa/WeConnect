@@ -4,11 +4,21 @@ python:
 install:
   - pip install -r api/v1/requirements.txt
 script:
-  - nosetests api/v1/tests.py
+  - nosetests api/v1/api/tests/tests_auth_endpoints.py
+  - nosetests api/v1/api/tests/tests_business_endpoints.py
+services:
+  - postgresql
 branches:
   only:
   - master
   - develop
   - feature/apiv1_branch
+  - feature/api_branch
+before_script:
+  - psql -c 'create database weconnect_test;' -U postgres
+  - psql -c 'create database weconnect;' -U postgres
+  - python api/v1/manage.py db init
+  - python api/v1/manage.py db migrate
+  - python api/v1/manage.py db upgrade
 after_success:
 - coveralls

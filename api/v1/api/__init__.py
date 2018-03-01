@@ -383,11 +383,12 @@ def create_app(config_name):
 
 
     def auth_check():
-        result = ''
+        result = 'Token not provided. Please Login And Provide The Token.'
         authorization = request.headers.get('Authorization')
-        token = authorization.split(' ')
-        if token[1]:
-            result = User.decode_token(token[1])
+        if authorization is not None:
+            token = authorization.split(' ')
+            if token[1]:
+                result = User.decode_token(token[1])
         return result
 
     return app

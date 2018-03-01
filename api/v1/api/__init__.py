@@ -22,6 +22,12 @@ def create_app(config_name):
     from .models.location import Location
     from .models.category import Category
 
+    @app.route('/', methods=['GET'])
+    def index():
+        response = jsonify({'message': 'Welcome!'})
+        response.status_code = 200
+        return response
+
     @app.route('/api/v1/auth/register', methods=['POST'])
     def register():
         """
